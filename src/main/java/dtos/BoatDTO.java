@@ -1,5 +1,7 @@
 package dtos;
 
+import entities.Boat;
+
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Set;
  * A DTO for the {@link entities.Boat} entity
  */
 public class BoatDTO implements Serializable {
-    private Integer id;
+    private int id;
     private String brand;
     private String make;
     private String name;
@@ -17,22 +19,27 @@ public class BoatDTO implements Serializable {
     private Set<HarbourDto> harbours;
     private Set<OwnerDto> owners;
 
-
-
-    public BoatDTO(Integer id, String brand, String make, String name, String image, Set<HarbourDto> harbours, Set<OwnerDto> owners) {
+    public BoatDTO(int id, String brand, String image, String make, String name) {
         this.id = id;
         this.brand = brand;
+        this.image = image;
         this.make = make;
         this.name = name;
-        this.image = image;
-        this.harbours = harbours;
-        this.owners = owners;
     }
 
     public BoatDTO() {
     }
 
-    public Integer getId() {
+    public BoatDTO(Boat boat) {
+        this.id = boat.getId();
+        this.brand = boat.getBrand();
+        this.image = boat.getImage();
+        this.make = boat.getMake();
+        this.name = boat.getName();
+
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -52,13 +59,7 @@ public class BoatDTO implements Serializable {
         return image;
     }
 
-    public Set<HarbourDto> getHarbours() {
-        return harbours;
-    }
 
-    public Set<OwnerDto> getOwners() {
-        return owners;
-    }
 
     /**
      * A DTO for the {@link entities.Harbour} entity
@@ -69,16 +70,16 @@ public class BoatDTO implements Serializable {
         private String name;
         @Size(max = 45)
         private String adress;
-        private Integer capacity;
+        private int capacity;
 
-        public HarbourDto(Integer id, String name, String adress, Integer capacity) {
+        public HarbourDto(int id, String name, String adress, int capacity) {
             this.id = id;
             this.name = name;
             this.adress = adress;
             this.capacity = capacity;
         }
 
-        public Integer getId() {
+        public int getId() {
             return id;
         }
 
@@ -90,7 +91,7 @@ public class BoatDTO implements Serializable {
             return adress;
         }
 
-        public Integer getCapacity() {
+        public int getCapacity() {
             return capacity;
         }
 
@@ -100,7 +101,7 @@ public class BoatDTO implements Serializable {
      * A DTO for the {@link entities.Owner} entity
      */
     public static class OwnerDto implements Serializable {
-        private Integer id;
+        private int id;
         @Size(max = 45)
         private String name;
         @Size(max = 45)
@@ -108,14 +109,14 @@ public class BoatDTO implements Serializable {
         @Size(max = 45)
         private String phone;
 
-        public OwnerDto(Integer id, String name, String adress, String phone) {
+        public OwnerDto(int id, String name, String adress, String phone) {
             this.id = id;
             this.name = name;
             this.adress = adress;
             this.phone = phone;
         }
 
-        public Integer getId() {
+        public int getId() {
             return id;
         }
 

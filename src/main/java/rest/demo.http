@@ -35,6 +35,17 @@ Content-Type: application/json
   "userPass": "test123"
 }
 
+### create new boat
+POST http://localhost:8080/harbour/api/admin/createboat
+Content-Type: application/json
+
+{
+  "brand": "test123",
+  "image": "test123",
+  "make": "test123",
+  "name": "test123"
+}
+
 ### access as an user
 GET http://localhost:8080/semesterproject/api/info/user
 x-access-token:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOiJ1c2VyIiwiZXhwIjoxNjcwNDIwODMxLCJpYXQiOjE2NzA0MTkwMzEsImlzc3VlciI6InNlbWVzdGVyc3RhcnRjb2RlLWRhdDMiLCJ1c2VybmFtZSI6InVzZXIifQ.D0iSnffJmryFmL20t8NkE1z-BT8CEufJFMO39_qD0MA

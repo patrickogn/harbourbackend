@@ -11,7 +11,7 @@ public class Boat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "boatid", nullable = false)
-    private Integer id;
+    private int id;
 
     @Size(max = 45)
     @Column(name = "brand", length = 45)
@@ -39,13 +39,26 @@ public class Boat {
     @JoinTable(name = "owner_has_boat",
             joinColumns = @JoinColumn(name = "boat_boatid"),
             inverseJoinColumns = @JoinColumn(name = "owner_idowner"))
+
     private Set<Owner> owners = new LinkedHashSet<>();
 
-    public Integer getId() {
+    public Boat() {
+    }
+
+    public Boat(int id, String brand, String image, String make, String name) {
+        this.id = id;
+        this.brand = brand;
+        this.image = image;
+        this.make = make;
+        this.name = name;
+
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
