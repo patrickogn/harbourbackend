@@ -24,7 +24,6 @@ public class OwnerFacade {
     }
 
 
-
     public static OwnerFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;

@@ -5,7 +5,10 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "owner")
+@NamedQuery(name = "Owner.deleteAllRows", query = "DELETE from Owner")
+
 public class Owner {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idowner", nullable = false)
@@ -22,6 +25,15 @@ public class Owner {
     @Size(max = 45)
     @Column(name = "phone", length = 45)
     private String phone;
+
+    public Owner(String name, String adress, String phone) {
+        this.name = name;
+        this.adress = adress;
+        this.phone = phone;
+    }
+
+    public Owner() {
+    }
 
     public Integer getId() {
         return id;

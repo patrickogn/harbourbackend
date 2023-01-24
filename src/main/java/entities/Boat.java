@@ -2,6 +2,8 @@ package entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "boat")
@@ -26,6 +28,18 @@ public class Boat {
     @Size(max = 45)
     @Column(name = "image", length = 45)
     private String image;
+
+    @ManyToMany
+    @JoinTable(name = "boat_has_harbour",
+            joinColumns = @JoinColumn(name = "boat_boatid"),
+            inverseJoinColumns = @JoinColumn(name = "harbour_idharbour"))
+    private Set<Harbour> harbours = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "owner_has_boat",
+            joinColumns = @JoinColumn(name = "boat_boatid"),
+            inverseJoinColumns = @JoinColumn(name = "owner_idowner"))
+    private Set<Owner> owners = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -65,6 +79,22 @@ public class Boat {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Set<Harbour> getHarbours() {
+        return harbours;
+    }
+
+    public void setHarbours(Set<Harbour> harbours) {
+        this.harbours = harbours;
+    }
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
     }
 
 }
